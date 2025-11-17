@@ -1,4 +1,4 @@
-# Advanced Windows Toolbox v5.0 / Gelişmiş Windows Araç Kutusu v5.0
+# Advanced Windows Toolbox v10.0 (PowerShell GUI)
 
 [English](#english) | [Türkçe](#türkçe)
 
@@ -8,112 +8,106 @@
 
 ## 🇬🇧 English
 
-### Advanced Windows Toolbox v5.0
+### Advanced Windows Toolbox v10.0 (PowerShell GUI)
 
-A powerful, menu-driven, dual-language batch script for Windows power-users, developers, and system administrators. This tool consolidates a massive array of system cleanup, repair, privacy, and tweaking tasks into a single, easy-to-use interface.
+A powerful, single-file, dual-language GUI application built in PowerShell for advanced Windows users, system administrators, and IT professionals. It consolidates a massive array of system cleanup, repair, privacy, and management tasks into one clean, easy-to-use, and installation-free interface.
 
-It is inspired by the functionality of tools like "Windows Repair Toolbox" and "privacy.sexy" but implemented entirely as a native Windows batch script (with PowerShell for advanced tasks) that requires no installation.
+This tool is inspired by the functionality of applications like *Windows Repair Toolbox* and *privacy.sexy*, but is implemented as a 100% native PowerShell script that leverages Windows Forms.
 
-### 🚨 VERY IMPORTANT: READ BEFORE USE 🚨
+### 🎨 Screenshot
 
-This is an extremely powerful tool designed for **expert users**.
 
-* **1. MUST RUN AS ADMINISTRATOR:** This script requires the highest privileges to perform its tasks. Right-click the `.bat` file and select **"Run as administrator"**.
-* **2. USE AT YOUR OWN RISK:** This tool makes significant changes to your system, including:
-    * Deleting system cache files.
-    * Modifying system services (Telemetry, DiagTrack).
-    * Editing the Windows Registry (Privacy, Tweaks).
-    * **Permanently removing** built-in Windows applications (Bloatware).
-    * Modifying your `hosts` file to block ads.
-* **3. NOT EASILY REVERSIBLE:** Many actions, especially "Debloating" and "Privacy" tweaks, are not easily undone.
-* **4. BACKUP YOUR DATA:** Before running aggressive options, ensure you have a system restore point or a full backup.
 
-The author is not responsible for any data loss or system damage. **Review the code before executing** if you are unsure about any function.
+### 🚨 CRITICAL: HOW TO RUN (Must Read!) 🚨
 
-### ✨ Features (v5.0)
+This application requires **two files** to be in the **same folder** and **must be run as Administrator**. Follow these steps precisely to avoid errors (like character encoding or "Point" errors).
 
-The script is organized into 8 main categories, each with its own sub-menu.
+#### Step 1: Save the Main Script (`Toolbox_GUI_v10.ps1`)
 
-#### [1] Comprehensive System Cleanup
-* Cleans all user and system `Temp` files.
-* Clears `Prefetch` cache.
-* Empties the Recycle Bin.
-* Clears Windows Update, Delivery Optimization, and Error Reporting caches.
-* Flushes the DNS cache.
-* Resets Microsoft Store and NVIDIA/GPU caches.
-* Clears all major browser caches (Chrome, Edge, Firefox).
-* **(Aggressive)** Clears all Windows Event Logs.
+1.  Copy the entire PowerShell (`.ps1`) code.
+2.  Open **Notepad**.
+3.  Paste the code.
+4.  Go to **File > Save As...**
+5.  Set "Save as type:" to **"All Files (\*.\*)"**.
+6.  Set the "File name:" to `Toolbox_GUI_v10.ps1`.
+7.  **THIS IS THE MOST IMPORTANT STEP:** Set "Encoding:" to **"UTF-8 with BOM"**. This is required for correct display of languages and icons (emoji).
 
-#### [2] System Health & Repair
-* **Repair System Files:** Runs both `DISM /RestoreHealth` and `SFC /scannow`.
-* **Check Disk (CHKDSK):** Schedules a disk check on the next restart.
-* **Defender Quick Scan:** Initiates a quick antivirus scan.
-* **Reset Print Spooler:** Fixes stuck print jobs.
-* **Open System Restore:** Launches the System Restore wizard.
-* **Open Reliability Monitor:** Launches the Reliability Monitor to check for system errors.
+    
 
-#### [3] Network Tools
-* **Reset Network Stack:** Flushes DNS, resets IP, and resets Winsock.
-* **Hard Reset Network Adapters:** Reinstalls all network adapters (requires restart).
-* **Show Saved Wi-Fi Passwords:** Lists all saved Wi-Fi SSIDs and passwords.
-* **Block Trackers & Ads (Hosts File):** Downloads and appends the popular StevenBlack `hosts` file to block ads and trackers system-wide.
+8.  Click **Save**.
 
-#### [4] Privacy & Debloating
-* **Privacy Settings:**
-    * Disables core Telemetry services (DiagTrack).
-    * Disables Advertising ID and Location Tracking.
-* **Windows Debloater:**
-    * Remove **All Bloatware** (Aggressive).
-    * Remove individual apps like **Xbox**, **Cortana**, **Phone Link**, **Mixed Reality**, **Solitaire**, and **Zune/Groove**.
+#### Step 2: Save the Launcher (`RUN_TOOLBOX.bat`)
 
-#### [5] System Tools & Tweaks
-* **Manage Power Plan:** Switch between "Balanced" and "High Performance".
-* **Manage Hibernation:** Enable or Disable (and delete `hiberfil.sys`).
-* **Manage Windows Features:** Install .NET 3.5 or install/disable Hyper-V.
-* **Reset Windows Search Index:** Fixes a broken search bar.
-* **Create 'God Mode' Folder:** Creates the master control panel shortcut.
-* **Manage Hidden Files:** Show or hide hidden files and file extensions.
-* **Rebuild Icon Cache:** Fixes broken or incorrect icons.
-* **Launchers:** Quickly open Task Manager and Event Viewer.
+1.  Open a **new** Notepad window.
+2.  Copy and paste the `.bat` launcher code (the small 30-line code block).
+3.  Go to **File > Save As...**
+4.  Set "Save as type:" to **"All Files (\*.\*)"**.
+5.  Set the "File name:" to `RUN_TOOLBOX.bat`.
+6.  Save this file in the **exact same folder** as `Toolbox_GUI_v10.ps1`.
 
-#### [6] Reporting & Info
-* **Quick System Info:** Displays PC name, user, IP, and MAC Address.
-* **Generate Battery Report:** (Laptops only) Creates a detailed HTML battery health report.
-* **List & Export Installed Programs:** Creates a `.txt` file on your desktop with a list of all installed (WMIC) programs.
+#### Step 3: Run the Application!
 
-#### [7S] Software & Process Management
-* **Update All Apps (Winget):** Runs `winget upgrade --all` to update all your installed applications.
-* **Kill Task:** Force-terminates a process by its name (e.g., `chrome.exe`).
+You are now ready. To start the toolbox:
 
-#### [8] Backup
-* **Quick Backup (Robocopy):** Mirrors a source folder to a destination. **Requires manual configuration.**
+* **DO NOT** right-click the `.ps1` file.
+* **DO** double-click the `RUN_TOOLBOX.bat` file.
 
-### ⚙️ How to Use
+This launcher will automatically:
+1.  Request Administrator (UAC) privileges.
+2.  Force PowerShell to read the `.ps1` file using the correct UTF-8 encoding.
+3.  Launch the GUI application.
 
-1.  Download the `.bat` file (e.g., `Advanced_Toolbox_v5_DUAL.bat`).
-2.  (Optional but Recommended) Open the file in a text editor to review the commands.
-3.  **CRITICAL:** Right-click the file and select **"Run as administrator"**.
-4.  At the first prompt, choose your language (**English** or **Türkçe**).
-5.  The main menu will appear. Type the number corresponding to your choice and press **Enter**.
-6.  Follow the on-screen prompts for each sub-menu or tool.
+### ⚠️ WARNINGS ⚠️
 
-### 🔧 Configuration (For Backup)
+* **Administrator Required:** The tool is designed to run as Administrator. Many functions (SFC, DISM, Registry Tweaks, Service Management) will fail without it. The `.bat` launcher handles this for you.
+* **Use At Your Own Risk:** This is a powerful tool for professionals. Actions like **Debloating** (removing core apps) and modifying **Privacy Settings** are not easily reversible.
+* **Create a Restore Point:** It is *highly recommended* to use **"Category 2 > Create System Restore Point"** before performing any aggressive actions like debloating or cleaning.
 
-The **Quick Backup** feature (Option 8) will **not** work until you configure it.
+### ✨ Features (v10.0)
 
-1.  Right-click the `.bat` file and choose "Edit" (or open it in a text editor).
-2.  Scroll down to the `:MENU_BACKUP` section.
-3.  Modify the `KAYNAK` (Source) and `HEDEF` (Destination) variables:
+The interface is organized into logical groups for ease of use.
 
-    ```batch
-    :: --------- AYARLAR ---------
-    :: --------- SETTINGS ---------
-    set KAYNAK="C:\Users\YOUR_USERNAME\Documents"
-    set HEDEF="D:\Backups\Documents"
-    :: ---------------------------
-    ```
+#### 1. Onarım ve Bakım (Repair & Maintenance)
+* **🧹 Comprehensive Cleanup:** The "Ultra Cleanup" script. Clears all system/user temp files, prefetch, browser caches (Chrome/Edge/Firefox), Windows Update cache, event logs, and more.
+* **🩺 System Health & Repair:**
+    * Create System Restore Point.
+    * Run `SFC /scannow` and `DISM /RestoreHealth` (in new windows, to prevent GUI freezing).
+    * Start a Windows Defender quick scan.
+    * Reset a stuck print spooler.
+    * Launch System Restore & Reliability Monitor.
+* **💾 Disk Tools:**
+    * Launch graphical Disk Cleanup, Disk Management, and Drive Optimizer (Defrag).
+    * Schedule `CHKDSK` on the next reboot.
 
-4.  Save the file and exit.
+#### 2. Ayarlar ve Güvenlik (Settings & Security)
+* **🛠️ System Tools & Tweaks:**
+    * Manage Services (SysMain, Windows Update, Fax).
+    * Manage Power Plans (Balanced/High Performance).
+    * Manage Hibernation (On/Off).
+    * Manage Windows Features (Install .NET 3.5 / Hyper-V).
+    * Reset Windows Search Index & Rebuild Icon Cache.
+    * Show/Hide Hidden Files and File Extensions.
+    * Launch Task Manager, Event Viewer, and create "God Mode" folder.
+* **🔒 Privacy & Debloating:**
+    * **Privacy:** Disable Telemetry services and Advertising ID.
+    * **Debloat:** A checklist to permanently remove built-in bloatware like Xbox, Cortana, Phone Link, Mixed Reality, Solitaire, and more.
+* **🌐 Network Tools:**
+    * Reset the entire network stack (DNS, IP, Winsock).
+    * Hard-reset network adapters (reinstalls drivers).
+    * Show all saved Wi-Fi passwords in the log.
+    * Block ads & trackers system-wide by appending the StevenBlack `hosts` file.
+
+#### 3. Uygulamalar ve Raporlar (Tools & Reporting)
+* **📦 Software Management:**
+    * **Install:** A `winget` installer for common apps (7-Zip, Notepad++, WizTree, etc.).
+    * **Uninstall:** A `WMIC`-based uninstaller.
+    * **Update:** Run `winget upgrade --all` to update all apps.
+    * **Kill Task:** A simple prompt to force-kill a running process.
+* **📊 Reporting & Info:**
+    * Get quick system info (PC Name, User, IP) in the log.
+    * Generate and open full `systeminfo`, `battery`, `startup program`, and `installed program` reports on your desktop.
+* **🗂️ Backup (Robocopy):**
+    * A simple GUI for `Robocopy /MIR` to mirror a source folder (like Documents) to a backup destination.
 
 ### 📜 License
 
@@ -125,112 +119,103 @@ This project is licensed under the MIT License.
 
 ## 🇹🇷 Türkçe
 
-### Gelişmiş Windows Araç Kutusu v5.0
+### Gelişmiş Windows Araç Kutusu v10.0 (PowerShell GUI)
 
-Windows uzman kullanıcıları, geliştiriciler ve sistem yöneticileri için tasarlanmış, menü kontrollü, çift dilli, güçlü bir batch betiğidir. Bu araç, sistem temizliği, onarımı, gizlilik ayarları ve ince ayar görevlerini tek ve kullanımı kolay bir arayüzde birleştirir.
+Gelişmiş Windows kullanıcıları, sistem yöneticileri ve BT profesyonelleri için PowerShell ile oluşturulmuş, güçlü, tek dosyalı, çift dilli bir GUI uygulamasıdır. Sistem temizliği, onarımı, gizlilik ve yönetim görevlerinin çok büyük bir kısmını tek bir temiz, kullanımı kolay ve kurulum gerektirmeyen arayüzde birleştirir.
 
-"Windows Repair Toolbox" ve "privacy.sexy" gibi araçların işlevselliğinden esinlenilmiştir, ancak herhangi bir kurulum gerektirmeyen, (gelişmiş görevler için PowerShell kullanan) tamamen yerel bir Windows batch betiği olarak uygulanmıştır.
+Bu araç, *Windows Repair Toolbox* ve *privacy.sexy* gibi uygulamaların işlevselliğinden esinlenmiştir, ancak Windows Forms kullanan %100 yerel bir PowerShell betiği olarak uygulanmıştır.
 
-### 🚨 ÇOK ÖNEMLİ: KULLANMADAN ÖNCE OKUYUN 🚨
+### 🎨 Ekran Görüntüsü
 
-Bu, **uzman kullanıcılar** için tasarlanmış son derece güçlü bir araçtır.
+[Gelişmiş Windows Araç Kutusu v10.0 karanlık mod GUI]
 
-* **1. YÖNETİCİ OLARAK ÇALIŞTIRILMALIDIR:** Bu betik, görevlerini yerine getirmek için en yüksek ayrıcalıklara ihtiyaç duyar. `.bat` dosyasına sağ tıklayın ve **"Yönetici olarak çalıştır"** seçeneğini seçin.
-* **2. RİSK SİZE AİTTİR:** Bu araç, sisteminizde aşağıdakiler de dahil olmak üzere önemli değişiklikler yapar:
-    * Sistem önbellek dosyalarını silme.
-    * Sistem hizmetlerini değiştirme (Telemetri, DiagTrack).
-    * Windows Kayıt Defteri'ni düzenleme (Gizlilik, İnce Ayarlar).
-    * Gömülü Windows uygulamalarını **kalıcı olarak kaldırma** (Bloatware).
-    * Reklamları engellemek için `hosts` dosyanızı değiştirme.
-* **3. KOLAYCA GERİ ALINAMAZ:** Başta "Debloat" ve "Gizlilik" ayarları olmak üzere birçok eylem kolayca geri alınamaz.
-* **4. VERİLERİNİZİ YEDEKLEYİN:** Agresif seçenekleri çalıştırmadan önce bir sistem geri yükleme noktanızın veya tam bir yedeğinizin olduğundan emin olun.
+### 🚨 ÇOK ÖNEMLİ: NASIL ÇALIŞTIRILIR (Mutlaka Okuyun!) 🚨
 
-Yazar, herhangi bir veri kaybı veya sistem hasarından sorumlu değildir. Herhangi bir işlevden emin değilseniz **çalıştırmadan önce kodu inceleyin**.
+Bu uygulamanın çalışması için **aynı klasörde iki dosya** bulunmalı ve **Yönetici olarak** çalıştırılmalıdır. Hatalardan (karakter kodlaması veya "Point" hataları gibi) kaçınmak için bu adımları tam olarak izleyin.
 
-### ✨ Özellikler (v5.0)
+#### Adım 1: Ana Betiği Kaydedin (`Toolbox_GUI_v10.ps1`)
 
-Betik, her biri kendi alt menüsüne sahip 8 ana kategoriye ayrılmıştır.
+1.  PowerShell (`.ps1`) kodunun tamamını kopyalayın.
+2.  **Not Defteri**'ni (Notepad) açın.
+3.  Kodu yapıştırın.
+4.  **Dosya > Farklı Kaydet...** menüsüne gidin.
+5.  "Kayıt türü:" seçeneğini **"Tüm Dosyalar (\*.\*)"** olarak değiştirin.
+6.  "Dosya adı:" kısmına `Toolbox_GUI_v10.ps1` yazın.
+7.  **EN ÖNEMLİ ADIM:** "Kodlama:" açılır listesinden **"BOM ile UTF-8"** (veya "UTF-8 with BOM") seçeneğini seçin. Bu, dillerin ve simgelerin (emoji) doğru görüntülenmesi için gereklidir.
+8.  **Kaydet**'e tıklayın.
 
-#### [1] Kapsamlı Sistem Temizliği
-* Tüm kullanıcı ve sistem `Temp` dosyalarını temizler.
-* `Prefetch` önbelleğini temizler.
-* Geri Dönüşüm Kutusu'nu boşaltır.
-* Windows Update, Teslim İyileştirme ve Hata Raporlama önbelleklerini temizler.
-* DNS önbelleğini temizler (Flushes DNS).
-* Microsoft Store ve NVIDIA/GPU önbelleklerini sıfırlar.
-* Tüm büyük tarayıcı önbelleklerini (Chrome, Edge, Firefox) temizler.
-* **(Agresif)** Tüm Windows Olay Günlüklerini temizler.
+#### Adım 2: Başlatıcıyı Kaydedin (`RUN_TOOLBOX.bat`)
 
-#### [2] Sistem Sağlığı ve Onarım
-* **Sistem Dosyalarını Onar:** Hem `DISM /RestoreHealth` hem de `SFC /scannow` komutlarını çalıştırır.
-* **Diski Kontrol Et (CHKDSK):** Bir sonraki yeniden başlatmada bir disk denetimi planlar.
-* **Defender Hızlı Tarama:** Hızlı bir antivirüs taraması başlatır.
-* **Yazdırma Biriktiricisini Sıfırla:** Takılı kalmış yazdırma işlerini düzeltir.
-* **Sistem Geri Yükleme'yi Aç:** Sistem Geri Yükleme sihirbazını başlatır.
-* **Güvenilirlik İzleyicisi'ni Aç:** Sistem hatalarını kontrol etmek için Güvenilirlik İzleyicisi'ni başlatır.
+1.  **Yeni** bir Not Defteri penceresi açın.
+2.  `.bat` başlatıcı kodunu (küçük, 30 satırlık kod bloğu) kopyalayıp yapıştırın.
+3.  **Dosya > Farklı Kaydet...** menüsüne gidin.
+4.  "Kayıt türü:" seçeneğini **"Tüm Dosyalar (\*.\*)"** olarak değiştirin.
+5.  "Dosya adı:" kısmına `RUN_TOOLBOX.bat` yazın.
+6.  Bu dosyayı, `Toolbox_GUI_v10.ps1` dosyasının bulunduğu **aynı klasöre** kaydedin.
 
-#### [3] Ağ Araçları
-* **Ağ Yığınını Sıfırla:** DNS'i temizler, IP'yi sıfırlar ve Winsock'u sıfırlar.
-* **Ağ Bağdaştırıcılarını Sert Sıfırla:** Tüm ağ bağdaştırıcılarını yeniden yükler (yeniden başlatma gerekir).
-* **Kayıtlı Wi-Fi Şifrelerini Göster:** Kayıtlı tüm Wi-Fi SSID'lerini ve şifrelerini listeler.
-* **İzleyicileri & Reklamları Engelle (Hosts Dosyası):** Popüler StevenBlack `hosts` dosyasını indirir ve sistem genelinde reklamları/izleyicileri engellemek için ekler.
+#### Adım 3: Uygulamayı Çalıştırın!
 
-#### [4] Gizlilik ve Debloat (Bloatware Kaldırma)
-* **Gizlilik Ayarları:**
-    * Çekirdek Telemetri hizmetlerini (DiagTrack) devre dışı bırakır.
-    * Reklam Kimliğini ve Konum Takibini devre dışı bırakır.
-* **Windows Debloater (Bloatware Kaldırıcı):**
-    * **TÜM Bloatware'leri Kaldır** (Agresif).
-    * **Xbox**, **Cortana**, **Telefon Bağlantısı**, **Karma Gerçeklik**, **Solitaire** ve **Zune/Groove** gibi uygulamaları tek tek kaldırın.
+Artık hazırsınız. Araç kutusunu başlatmak için:
 
-#### [5] Sistem Araçları ve İnce Ayarlar
-* **Güç Planını Yönet:** "Dengeli" ve "Yüksek Performans" arasında geçiş yapın.
-* **Hazırda Bekleme Modunu Yönet:** Etkinleştirin veya devre dışı bırakın (`hiberfil.sys` dosyasını silin).
-* **Windows Özelliklerini Yönet:** .NET 3.5 yükleyin veya Hyper-V'yi yükleyin/devre dışı bırakın.
-* **Windows Arama Dizinini Sıfırla:** Bozuk bir arama çubuğunu düzeltir.
-* **'God Mode' Klasörü Oluştur:** Ana denetim masası kısayolunu oluşturur.
-* **Gizli Dosyaları Yönet:** Gizli dosyaları ve dosya uzantılarını gösterin veya gizleyin.
-* **Simge Önbelleğini Yeniden Oluştur:** Bozuk veya yanlış simgeleri düzeltir.
-* **Başlatıcılar:** Görev Yöneticisi'ni ve Olay Görüntüleyicisi'ni hızla açın.
+* `.ps1` dosyasına sağ **tıklamayın**.
+* `RUN_TOOLBOX.bat` dosyasına **çift tıklayın**.
 
-#### [6] Raporlama ve Bilgi
-* **Hızlı Sistem Bilgisi:** PC adı, kullanıcı, IP ve MAC Adresini görüntüler.
-* **Pil Raporu Oluştur:** (Yalnızca Laptoplar) Ayrıntılı bir HTML pil sağlığı raporu oluşturur.
-* **Yüklü Programları Listele ve Dışa Aktar:** Masaüstünüze tüm yüklü (WMIC) programların bir listesini içeren bir `.txt` dosyası oluşturur.
+Bu başlatıcı otomatik olarak:
+1.  Yönetici (UAC) ayrıcalıkları isteyecektir.
+2.  PowerShell'i `.ps1` dosyasını doğru UTF-8 kodlamasıyla okumaya zorlayacaktır.
+3.  GUI uygulamasını başlatacaktır.
 
-#### [7] Yazılım ve İşlem Yönetimi
-* **Tüm Uygulamaları Güncelle (Winget):** `winget upgrade --all` komutunu çalıştırarak yüklü tüm uygulamalarınızı günceller.
-* **Görevi Sonlandır:** Bir işlemi adına göre (örn: `chrome.exe`) zorla sonlandırır.
+### ⚠️ UYARILAR ⚠️
 
-#### [8] Yedekleme
-* **Hızlı Yedekleme (Robocopy):** Bir kaynak klasörü bir hedefe yansıtır. **Manuel yapılandırma gerektirir.**
+* **Yönetici Gerekli:** Araç, Yönetici olarak çalışmak üzere tasarlanmıştır. Birçok işlev (SFC, DISM, Kayıt Defteri Ayarları, Hizmet Yönetimi) bu olmadan başarısız olur. `.bat` başlatıcısı bunu sizin için halleder.
+* **Risk Size Aittir:** Bu, profesyoneller için güçlü bir araçtır. **Debloat** (çekirdek uygulamaları kaldırma) ve **Gizlilik Ayarları** gibi eylemler kolayca geri alınamaz.
+* **Geri Yükleme Noktası Oluşturun:** Debloat veya temizlik gibi agresif eylemleri gerçekleştirmeden önce **"Kategori 2 > Sistem Geri Yükleme Noktası Oluştur"** özelliğini kullanmanız *şiddetle* tavsiye edilir.
 
-### ⚙️ Nasıl Kullanılır
+### ✨ Özellikler (v10.0)
 
-1.  `.bat` dosyasını indirin (örn: `Advanced_Toolbox_v5_DUAL.bat`).
-2.  (İsteğe bağlı ancak önerilir) Komutları gözden geçirmek için dosyayı bir metin düzenleyicide açın.
-3.  **ÇOK ÖNEMLİ:** Dosyaya sağ tıklayın ve **"Yönetici olarak çalıştır"** seçeneğini seçin.
-4.  İlk istemde dilinizi seçin (**English** veya **Türkçe**).
-5.  Ana menü görünecektir. Seçiminize karşılık gelen sayıyı yazın ve **Enter**'a basın.
-6.  Her bir alt menü veya araç için ekrandaki komutları izleyin.
+Arayüz, kullanım kolaylığı için mantıksal gruplara ayrılmıştır.
 
-### 🔧 Yapılandırma (Yedekleme İçin)
+#### 1. Onarım ve Bakım
+* **🧹 Kapsamlı Sistem Temizliği:** "Ultra Temizlik" betiği. Tüm sistem/kullanıcı geçici dosyalarını, prefetch'i, tarayıcı önbelleklerini (Chrome/Edge/Firefox), Windows Update önbelleğini, olay günlüklerini ve daha fazlasını temizler.
+* **🩺 Sistem Sağlığı ve Onarım:**
+    * Sistem Geri Yükleme Noktası oluşturun.
+    * `SFC /scannow` ve `DISM /RestoreHealth` çalıştırın (GUI'nin donmasını önlemek için yeni pencerelerde).
+    * Windows Defender hızlı taraması başlatın.
+    * Takılı kalmış yazdırma biriktiricisini sıfırlayın.
+    * Sistem Geri Yükleme ve Güvenilirlik İzleyicisi'ni başlatın.
+* **💾 Disk Araçları:**
+    * Grafik arayüzlü Disk Temizleme, Disk Yönetimi ve Sürücü İyileştirici'yi (Defrag) başlatın.
+    * Bir sonraki yeniden başlatma için `CHKDSK` planlayın.
 
-**Hızlı Yedekleme** özelliği (Seçenek 8), siz yapılandırana kadar çalışmayacaktır.
+#### 2. Ayarlar ve Güvenlik
+* **🛠️ Sistem Araçları ve İnce Ayarlar:**
+    * Hizmetleri Yönet (SysMain, Windows Update, Faks).
+    * Güç Planlarını Yönet (Dengeli/Yüksek Performans).
+    * Hazırda Bekleme Modunu Yönet (Aç/Kapat).
+    * Windows Özelliklerini Yönet (Install .NET 3.5 / Hyper-V).
+    * Windows Arama Dizinini Sıfırla ve Simge Önbelleğini Yeniden Oluştur.
+    * Gizli Dosyaları ve Dosya Uzantılarını Göster/Gizle.
+    * Görev Yöneticisi, Olay Görüntüleyicisi'ni başlatın ve "God Mode" klasörü oluşturun.
+* **🔒 Gizlilik ve Debloat:**
+    * **Gizlilik:** Telemetri hizmetlerini ve Reklam Kimliğini devre dışı bırakın.
+    * **Debloat:** Xbox, Cortana, Telefon Bağlantısı, Karma Gerçeklik, Solitaire ve daha fazlası gibi gömülü bloatware'leri kalıcı olarak kaldırmak için bir kontrol listesi.
+* **🌐 Ağ Araçları:**
+    * Tüm ağ yığınını sıfırlayın (DNS, IP, Winsock).
+    * Ağ bağdaştırıcılarını sert sıfırlayın (sürücüleri yeniden yükler).
+    * Kaydedilen tüm Wi-Fi şifrelerini günlükte gösterin.
+    * StevenBlack `hosts` dosyasını ekleyerek sistem genelinde reklamları ve izleyicileri engelleyin.
 
-1.  `.bat` dosyasına sağ tıklayın ve "Düzenle" seçeneğini seçin (veya bir metin düzenleyicide açın).
-2.  Dosyada `:MENU_BACKUP` bölümüne gidin.
-3.  `KAYNAK` ve `HEDEF` değişkenlerini değiştirin:
-
-    ```batch
-    :: --------- AYARLAR ---------
-    :: --------- SETTINGS ---------
-    set KAYNAK="C:\Users\KULLANICI_ADINIZ\Documents"
-    set HEDEF="D:\Yedeklerim\Belgeler"
-    :: ---------------------------
-    ```
-
-4.  Dosyayı kaydedin ve çıkın.
+#### 3. Uygulamalar ve Raporlar
+* **📦 Yazılım Yönetimi:**
+    * **Kur:** Yaygın uygulamalar (7-Zip, Notepad++, WizTree, vb.) için bir `winget` yükleyici.
+    * **Kaldır:** `WMIC` tabanlı bir program kaldırıcı.
+    * **Güncelle:** Tüm uygulamalarınızı güncellemek için `winget upgrade --all` komutunu çalıştırın.
+    * **Sonlandır:** Çalışan bir işlemi adına göre zorla sonlandırmak için basit bir istem.
+* **📊 Raporlama ve Bilgi:**
+    * Günlük panelinde hızlı sistem bilgisi (PC Adı, Kullanıcı, IP) alın.
+    * Masaüstünüzde tam `systeminfo`, `pil`, `başlangıç programı` ve `yüklü program` raporları oluşturun ve açın.
+* **🗂️ Yedekleme (Robocopy):**
+    * Bir kaynak klasörü (Belgeler gibi) bir yedek hedefe yansıtmak (mirror) için basit bir `Robocopy /MIR` arayüzü.
 
 ### 📜 Lisans
 
